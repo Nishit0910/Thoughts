@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace = "normal/base::layout(~{::section})">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Blog</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <section class="bstyle">  
+
+
+        <div class="card">
+            <div class="card-body">
+                <h1 class="text-center ml-3"> Your Blogs <span th:text="${user.userName}"></span></h1>
+
+            <div class="blog-container">
+
+                <a th:each="b : ${blogger}" class="blog-box" th:href="@{'/user/blogger/'+${b.bId}}" href="#">
+                    <div class="blog-img">
+                        <img src="" th:src="@{'/img/'+${b.image}}" alt="blog image">
+                    </div>
+
+                <div class="blog-text">
+                    <span th:text="${b.title}"  class="blog-title"> </span>
+                    <p th:text="${b.blogs}"></p>
+                    <!-- <> Read More .. -->
+                </div>
+                </a>
+                <!-- </div> -->
+
+            </div>
+            </div>
+
+        </div>
+        
+    </section>
+    
+</body>
+</html>
