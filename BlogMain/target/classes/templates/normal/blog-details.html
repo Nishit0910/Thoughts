@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace = "normal/base::layout(~{::section})">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='script.js'></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <section class="bDetail">
+        
+            <div class="blog-contain">
+                <div th:each="b : ${blogger}" class="blog-bx">
+                    <div class="blog-imag">
+                        <img src="" th:src="@{'/img/'+${blogger.image}}" alt="blog image">
+                    </div>
+                    <!-- th:href="@{'/user/delete/'+${b.bId}}"> -->
+
+                    <!-- Delete Blog  -->
+                    <a th:href="@{'/user/delete/'+${b.bId}}">
+                        <i class="fa-solid fa-trash" style="float: right; padding: 14px;"></i>
+                    </a>
+
+                    <!-- th:href="@{''}" -->
+                     <!-- Comment -->
+                    <a href="#textarea">
+                        <i class="fa-solid fa-comment" style="float: right; padding: 14px;"></i>
+                    </a>
+
+                     <!-- Like Blog -->
+                     <!--  th:href="@{'/user/blogger/' + ${bId} + '/like'}" -->
+                      <!--  -->
+                     <!-- <th:block> -->
+                        <a th:onclick="'sendPutRequest(' + ${bId} + ')'" >
+                            <!-- <i class="fa-solid fa-thumbs-up fa-bounce" style=" float: right; padding: 14px;"></i> -->
+                            <i class="fa-solid fa-thumbs-up" style="color: rgba(0,123,255,255); float: right; padding: 14px;"></i>
+                        </a>
+                     <!-- </th:block> -->
+                      
+                    
+                    <span th:text="${blogger.title}"  class="blog-titl"> </span>
+                    <p class="para" th:utext="${blogger.blogs}"> </p>
+                    <div class="Comment mt-3">
+                        <div  class="text">
+                            <p><b>Comments Section:-</b></p>
+                            <div th:each="c : ${comment}">
+                                <p th:text="${c.comment}"> </p>
+                            </div>
+                        </div>
+                        <form method="post" th:object="${comment}" th:action="@{'/user/blogger/'+${b.bId}}">
+                            <textarea style="justify-content: center; margin-top: 20px; margin-left: 40px;" placeholder="Any Comment ??" name="comment"  id="textarea" cols="50" rows="2"></textarea>
+                            <div id="Comment" class="container text-center">
+                                <button type="submit" class="btn btn-outline-primary">Send</button>
+                            </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+    </section>
+</body>
+</html>
