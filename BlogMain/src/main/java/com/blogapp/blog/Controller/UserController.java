@@ -171,66 +171,6 @@ import jakarta.servlet.http.HttpSession;
         // redirect:/user/blogger/{bId}
     }
 
-    
-
-
-    // public String Comment(@PathVariable("bId")Integer bId, Model model){
-    //     System.out.println("BID" +bId); 
-
-    //     // Optional<Blogger> bOptional  = this.bloggerRepo.findById(bId);
-    //     // Blogger blogger = bOptional.get();
-    //     // System.out.println( "Blogg:: " +blogger);
-
-    //     Blogger blog = bloggerRepo.findById(bId)
-    //         .orElseThrow(() -> new EntityNotFoundException("Blogger not found for ID: " + bId));        System.out.println(" BID :>" +blog);
-    //     Comments comm = this.commentRepo.findBloggerById(blog.getbId());
-    //     model.addAttribute("comment", new Comments());
-    //     System.out.println("bId :" +comm);
-    //     comm.setBlogger(blog);
-    //     blog.getComments().add(comm);
-    //     this.bloggerRepo.save(blog);
-
-
-    // @GetMapping("/{bId}/add-comment")
-    // public String addComment(Model model){
-    //     // @PathVariable("bId") Integer bId,
-    //     // Optional<Blogger> bOptional  = this.bloggerRepo.findById(bId);
-    //     // Blogger blogger = bOptional.get();
-    //     // model.addAttribute("blogger", blogger);
-    //     // List<Comments> comments = this.commentRepo.findCommentsByBlog(bId);
-    //     // model.addAttribute("comment", comments);
-    //     model.addAttribute("title","Add Comment");
-    //     model.addAttribute("comment", new Comments());
-    //     return "normal/add-comment";
-    // }
-
-    // @PostMapping("/process-comment")
-    // public String Comment(@ModelAttribute Comments comment ,Model model,Principal principal){
-    //     try{
-    //     // String name = principal.getName();
-    //     // User user = this.userRepo.getUserByUsername(name);
-    //     // System.out.println(" tit:" +user);
-    //     // Blogger blogger = this.bloggerRepo.findBlogByUser(user.getId());
-    //     // System.out.println("::" +blogger);
-
-    //     // Comments comm = this.commentRepo.findBloggerById(user.getId());
-    //     // comm.setBlogger(comm);
-        
-    //     // blogger.getComments().add(comment);
-    //     // this.bloggerRepo.save(blogger);
-    //     // System.out.println("Comment added" +comm);
-    //     // if(title == null){
-    //     //     model.addAttribute("Comm", new Comments());
-    //     // }
-    //     // else{
-    //     // }
-    // } catch(Exception e){
-    //     System.out.println("Error" +e.getMessage());
-    // }
-
-    //     return "normal/add-comment";
-    // }
-
     @GetMapping("/index")
     public String Home(Model model, Principal principal){
         model.addAttribute("title","Blogs Home");
